@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import express, { type NextFunction, type Request, type Response } from 'express'
 import cors from 'cors'
 import { routes } from './routes'
