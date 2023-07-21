@@ -6,7 +6,7 @@ import { UpdateProductService } from '../services/update-product-service'
 import { DeleteProductService } from '../services/delete-product-service'
 
 export class ProductController {
-  public async index (response: Response): Promise<Response> {
+  public async index (request: Request, response: Response): Promise<Response> {
     const listProducts = new ListProductService()
     const products = await listProducts.execute()
     return response.json(products)
@@ -47,6 +47,6 @@ export class ProductController {
     const { id } = request.params
     const deleteProduct = new DeleteProductService()
     await deleteProduct.execute({ id: Number(id) })
-    return response.status(201)
+    return response.status(204).send()
   }
 }
