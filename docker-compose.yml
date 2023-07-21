@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+    database_sales:
+        image: postgres
+        container_name: database_sales
+        restart: always
+        ports: 
+            - 5432:5432
+        environment:
+            - POSTGRES_USER=pato
+            - POSTGRES_PASSWORD=pato011
+            - POSTGRES_DB=apisales
