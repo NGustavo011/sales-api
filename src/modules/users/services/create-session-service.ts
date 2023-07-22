@@ -4,6 +4,7 @@ import { UserRepository } from '../typeorm/repositories/user-repository'
 import { AppError } from '@shared/errors/app-error'
 import { compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
+import env from '@shared/config/env'
 
 interface IRequest {
   email: string
@@ -26,7 +27,7 @@ export class CreateSessionService {
     if (!validPassword) {
       throw new AppError('Incorrect email/password combination', 401)
     }
-    const token = sign({ id: user.id, name: user.name }, 'pato', { subject: user.id.toString(), expiresIn: '1d' })
+    const token = sign({ id: user.id, name: user.name }, env.jwtSecret, { subject: user.id.toString(), expiresIn: '1d' })
     return { user, token }
   }
 }

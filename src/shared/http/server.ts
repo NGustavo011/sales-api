@@ -6,6 +6,9 @@ import { routes } from './routes'
 import { AppError } from '@shared/errors/app-error'
 import '@shared/typeorm'
 import { errors } from 'celebrate'
+import env, { loadEnvConfig } from '@shared/config/env'
+
+loadEnvConfig()
 
 const app = express()
 app.use(cors())
@@ -27,6 +30,6 @@ app.use((error: Error, request: Request, response: Response, next: NextFunction)
   })
 })
 
-app.listen(3333, () => {
+app.listen(env.port, () => {
   console.log('Server started on port 3333!')
 })
