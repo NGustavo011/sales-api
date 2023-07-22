@@ -7,12 +7,14 @@ import { AppError } from '@shared/errors/app-error'
 import '@shared/typeorm'
 import { errors } from 'celebrate'
 import env, { loadEnvConfig } from '@config/env'
+import { uploadConfig } from '@config/upload'
 
 loadEnvConfig()
 
 const app = express()
 app.use(cors())
 app.use(express.json())
+app.use('/files', express.static(uploadConfig.directory))
 
 app.use(routes)
 app.use(errors())
