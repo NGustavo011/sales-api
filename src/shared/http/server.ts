@@ -6,7 +6,7 @@ import { routes } from './routes'
 import { AppError } from '@shared/errors/app-error'
 import '@shared/typeorm'
 import { errors } from 'celebrate'
-import env, { loadEnvConfig } from '@shared/config/env'
+import env, { loadEnvConfig } from '@config/env'
 
 loadEnvConfig()
 
