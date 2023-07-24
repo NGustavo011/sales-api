@@ -47,6 +47,6 @@ export class ProductController {
     const { id } = request.params
     const deleteProduct = new DeleteProductService()
     await deleteProduct.execute({ id: Number(id) })
-    return response.status(204).send()
+    return response.status(204).json()
   }
 }
