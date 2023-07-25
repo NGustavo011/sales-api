@@ -9,7 +9,7 @@ export class Customer {
     name: string
 
   @Column()
-    avatar: string
+    email: string
 
   @CreateDateColumn()
     created_at: Date
