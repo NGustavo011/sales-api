@@ -1,3 +1,4 @@
+import { customerRouter } from '@modules/customers/routes/customer.routes'
 import { productRouter } from '@modules/products/routes/product.routes'
 import { passwordRouter } from '@modules/users/routes/password.routes'
 import { profileRouter } from '@modules/users/routes/profile.routes'
@@ -12,3 +13,4 @@ routes.use('/user', userRouter)
 routes.use('/profile', profileRouter)
 routes.use('/session', sessionRouter)
 routes.use('/password', passwordRouter)
+routes.use('/customer', customerRouter)
