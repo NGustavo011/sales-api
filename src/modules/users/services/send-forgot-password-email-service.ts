@@ -3,6 +3,7 @@ import { UserRepository } from '../typeorm/repositories/user-repository'
 import { UserTokenRepository } from '../typeorm/repositories/user-token-repository'
 import { AppError } from '@shared/errors/app-error'
 import EtherealMail from '@config/mail/ethereal-mail'
+import path from 'path'
 
 interface IRequest {
   email: string
@@ -17,6 +18,7 @@ export class SendForgotPasswordEmailService {
       throw new AppError('User does not exists')
     }
     const { token } = await userTokenRepository.generateToken(user.id)
+    const forgotPasswordTemplate = path.resolve(__dirname, '..', 'views', 'forgot-password.hbs')
     await EtherealMail.sendMail({
       to: {
         name: user.name,
@@ -24,10 +26,10 @@ export class SendForgotPasswordEmailService {
       },
       subject: '[SALES-API] Recuperação de senha',
       templateData: {
-        template: 'Olá {{name}}: {{token}}',
+        file: forgotPasswordTemplate,
         variables: {
           name: user.name,
-          token
+          link: `http://localhost:3000/reset_password?token=${token}`
         }
       }
     })

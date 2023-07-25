@@ -4,7 +4,7 @@ import { HandlebarsMailTemplate } from './handlebars-mail-template'
 type ITemplateVariable = Record<string, string | number>
 
 export interface IParserMailTemplate {
-  template: string
+  file: string
   variables: ITemplateVariable
 }
 
