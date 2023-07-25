@@ -20,7 +20,7 @@ export class UpdateProfileService {
       throw new AppError('User not found')
     }
     const userUpdateEmail = await userRepository.findByEmail(email)
-    if (userUpdateEmail && userUpdateEmail.id !== userId) {
+    if (userUpdateEmail && userUpdateEmail.id !== Number(userId)) {
       throw new AppError('Email already in use')
     }
     if (password && !oldPassword) {

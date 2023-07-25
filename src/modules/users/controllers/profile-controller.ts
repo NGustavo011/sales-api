@@ -3,7 +3,7 @@ import { ShowProfileService } from '../services/show-profile-service'
 import { UpdateProfileService } from '../services/update-profile-service'
 
 export class ProfileController {
-  public async index (request: Request, response: Response): Promise<Response> {
+  public async show (request: Request, response: Response): Promise<Response> {
     const userId = request.user.id
     const showProfile = new ShowProfileService()
     const user = await showProfile.execute({ userId })
