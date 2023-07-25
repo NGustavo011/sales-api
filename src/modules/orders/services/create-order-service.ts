@@ -41,10 +41,10 @@ export class CreateOrderService {
       )[0].quantity < product.quantity
     )
     if (quantityAvailable.length) {
-      throw new AppError(`The quantity ${quantityAvailable[0].quantity} is not available for ${quantityAvailable[0].id}`)
+      throw new AppError(`The quantity ${quantityAvailable[0].quantity} is not available for product ${quantityAvailable[0].id}`)
     }
     const serializedProducts = products.map(product => ({
-      productId: product.id,
+      product_id: product.id,
       quantity: product.quantity,
       price: existsProducts.filter(p => p.id === product.id)[0].price
     }))
@@ -52,12 +52,11 @@ export class CreateOrderService {
       customer: customerExists,
       products: serializedProducts
     })
-
     // eslint-disable-next-line @typescript-eslint/naming-convention
     const { order_products } = order
     const updatedProductQuantity = order_products.map((product) => ({
-      id: product.id,
-      quantity: existsProducts.filter(p => p.id === product.id)[0].quantity - product.quantity
+      id: product.product_id,
+      quantity: existsProducts.filter(p => p.id === product.product_id)[0].quantity - product.quantity
     }))
     await productRepository.save(updatedProductQuantity)
     return order
