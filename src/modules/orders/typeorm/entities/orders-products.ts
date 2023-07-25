@@ -21,6 +21,12 @@ export class OrdersProducts {
   @JoinColumn({ name: 'product_id' })
     product: Product
 
+  @Column()
+    order_id: number
+
+  @Column()
+    product_id: number
+
   @CreateDateColumn()
     created_at: Date
 
