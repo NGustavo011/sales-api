@@ -22,7 +22,7 @@ export class SendForgotPasswordEmailService {
         name: user.name,
         email: user.email
       },
-      subject: '[SALES API] Recuperação de senha',
+      subject: '[SALES-API] Recuperação de senha',
       templateData: {
         template: 'Olá {{name}}: {{token}}',
         variables: {
