@@ -7,7 +7,7 @@ import fs from 'fs'
 import { type User } from '../typeorm/entities/user'
 
 interface IRequest {
-  userId: string
+  userId: number
   avatarFileName: string
 }
 
