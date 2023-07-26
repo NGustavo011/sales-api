@@ -12,7 +12,7 @@ export const cacheConfig: ICacheConfig = {
   config: {
     redis: {
       host: env.redisHost,
-      port: Number(env.redisPort),
+      port: env.redisPort,
       password: env.redisPass
     }
   },

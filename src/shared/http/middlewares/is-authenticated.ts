@@ -18,7 +18,7 @@ export function isAuthenticated (request: Request, response: Response, next: Nex
     const decodedToken = verify(token, authConfig.jwt.secret)
     const { sub } = decodedToken as ITokenPayload
     request.user = {
-      id: sub
+      id: Number(sub)
     }
     next()
   } catch (error) {
