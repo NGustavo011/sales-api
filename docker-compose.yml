@@ -11,3 +11,8 @@ services:
             - POSTGRES_USER=pato
             - POSTGRES_PASSWORD=pato011
             - POSTGRES_DB=apisales
+    redis_sales:
+        image: redis:6.2-alpine
+        restart: always
+        ports:
+            - '6379:6379'
