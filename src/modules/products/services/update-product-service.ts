@@ -2,6 +2,8 @@ import { getCustomRepository } from 'typeorm'
 import { ProductRepository } from '../typeorm/repositories/product-repository'
 import { AppError } from '@shared/errors/app-error'
 import { type Product } from '../typeorm/entities/product'
+import { RedisCache } from '@shared/cache/redis-cache'
+import env from '@config/env'
 
 interface IRequest {
   id: number
@@ -25,6 +27,8 @@ export class UpdateProductService {
     product.price = price
     product.quantity = quantity
     await productRepository.save(product)
+    const redisCache = new RedisCache()
+    await redisCache.invalidate(env.cacheProductList)
     return product
   }
 }

@@ -1,8 +1,6 @@
 import dotenv from 'dotenv'
 
-export const loadEnvConfig = (): void => {
-  dotenv.config()
-}
+dotenv.config()
 
 export default {
   port: process.env.PORT ?? 3333,
@@ -11,5 +9,6 @@ export default {
   webUrl: process.env.WEB_URL ?? 'http://localhost:3000',
   redisHost: process.env.REDIS_HOST ?? 'localhost',
   redisPort: process.env.REDIS_PORT ?? 6379,
-  redisPass: process.env.REDIS_PASS ?? undefined
+  redisPass: process.env.REDIS_PASS ?? undefined,
+  cacheProductList: process.env.CACHE_PRODUCT_LIST ?? 'PRODUCT_LIST'
 }

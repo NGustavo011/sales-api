@@ -1,6 +1,8 @@
 import { getCustomRepository } from 'typeorm'
 import { ProductRepository } from '../typeorm/repositories/product-repository'
 import { AppError } from '@shared/errors/app-error'
+import { RedisCache } from '@shared/cache/redis-cache'
+import env from '@config/env'
 
 interface IRequest {
   id: number
@@ -14,5 +16,7 @@ export class DeleteProductService {
       throw new AppError('Product not found')
     }
     await productRepository.remove(product)
+    const redisCache = new RedisCache()
+    await redisCache.invalidate(env.cacheProductList)
   }
 }

@@ -1,4 +1,4 @@
-import env, { loadEnvConfig } from '@config/env'
+import env from '@config/env'
 import 'reflect-metadata'
 import 'express-async-errors'
 import express, { type NextFunction, type Request, type Response } from 'express'
@@ -9,8 +9,6 @@ import '@shared/typeorm'
 import { errors } from 'celebrate'
 import { pagination } from 'typeorm-pagination'
 import { uploadConfig } from '@config/upload'
-
-loadEnvConfig()
 
 const app = express()
 app.use(cors())
