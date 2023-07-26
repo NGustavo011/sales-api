@@ -10,7 +10,7 @@ export const userRouter = Router()
 const userController = new UserController()
 const userAvatarController = new UserAvatarController()
 
-const upload = multer(uploadConfig)
+const upload = multer(uploadConfig.multer)
 
 userRouter.get('/', isAuthenticated, userController.index)
 userRouter.post(

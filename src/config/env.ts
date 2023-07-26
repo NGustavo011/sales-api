@@ -14,5 +14,6 @@ export default {
   mailDriver: process.env.MAIL_DRIVER ?? 'ethereal',
   awsRegion: process.env.AWS_REGION ?? '',
   awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID ?? '',
-  awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? ''
+  awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? '',
+  storageDriver: process.env.STORAGE_DRIVER ?? 'disk'
 }
