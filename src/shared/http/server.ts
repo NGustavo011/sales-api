@@ -1,3 +1,4 @@
+import env, { loadEnvConfig } from '@config/env'
 import 'reflect-metadata'
 import 'express-async-errors'
 import express, { type NextFunction, type Request, type Response } from 'express'
@@ -7,7 +8,6 @@ import { AppError } from '@shared/errors/app-error'
 import '@shared/typeorm'
 import { errors } from 'celebrate'
 import { pagination } from 'typeorm-pagination'
-import env, { loadEnvConfig } from '@config/env'
 import { uploadConfig } from '@config/upload'
 
 loadEnvConfig()
