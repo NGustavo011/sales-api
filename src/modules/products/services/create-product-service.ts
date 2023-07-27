@@ -1,7 +1,7 @@
 import { getCustomRepository } from 'typeorm'
-import { ProductRepository } from '../typeorm/repositories/product-repository'
+import { ProductRepository } from '../infra/typeorm/repositories/product-repository'
 import { AppError } from '@shared/errors/app-error'
-import { type Product } from '../typeorm/entities/product'
+import { type Product } from '../infra/typeorm/entities/product'
 import redisCache from '@shared/cache/redis-cache'
 import env from '@config/env'
 

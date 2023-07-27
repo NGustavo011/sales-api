@@ -1,6 +1,6 @@
 import { getCustomRepository } from 'typeorm'
-import { type User } from '../typeorm/entities/user'
-import { UserRepository } from '../typeorm/repositories/user-repository'
+import { type User } from '../infra/typeorm/entities/user'
+import { UserRepository } from '../infra/typeorm/repositories/user-repository'
 import { AppError } from '@shared/errors/app-error'
 import { compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
